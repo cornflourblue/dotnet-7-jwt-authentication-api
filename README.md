@@ -2,4 +2,4 @@
 
 .NET 7.0 - JWT Authentication API
 
-Documentation at https://jasonwatmore.com/net-7-c-jwt-authentication-tutorial-with-example-api
+Documentation at https://jasonwatmore.com/net-7-csharp-jwt-authentication-tutorial-without-aspnet-core-identity
