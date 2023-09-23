@@ -1,9 +1,8 @@
-namespace WebApi.Services;
-
 using WebApi.Authorization;
 using WebApi.Entities;
 using WebApi.Models;
 
+namespace WebApi.Services;
 public interface IUserService
 {
     AuthenticateResponse? Authenticate(AuthenticateRequest model);
@@ -14,9 +13,12 @@ public interface IUserService
 public class UserService : IUserService
 {
     // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-    private List<User> _users = new List<User>
+    private readonly List<User> _users = new()
     {
-        new User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
+        new User
+        {
+            Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test", Role = Role.Admin
+        }
     };
 
     private readonly IJwtUtils _jwtUtils;
