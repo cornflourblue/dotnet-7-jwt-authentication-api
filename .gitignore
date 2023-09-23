@@ -40,3 +40,5 @@ typings
 # .NET compiled files
 bin
 obj
+.vs
+/Properties/launchSettings.json

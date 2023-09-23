@@ -1,12 +1,13 @@
-﻿namespace WebApi.Controllers;
+﻿using Microsoft.AspNetCore.Mvc;
 
-using Microsoft.AspNetCore.Mvc;
 using WebApi.Authorization;
+using WebApi.Entities;
 using WebApi.Models;
 using WebApi.Services;
 
+namespace WebApi.Controllers;
+
 [ApiController]
-[Authorize]
 [Route("[controller]")]
 public class UsersController : ControllerBase
 {
@@ -29,10 +30,20 @@ public class UsersController : ControllerBase
         return Ok(response);
     }
 
+    [Authorize(Role.User)]
     [HttpGet]
     public IActionResult GetAll()
     {
         var users = _userService.GetAll();
         return Ok(users);
+    }
+
+    [Authorize(Role.Admin)]
+    [HttpGet("{id}")]
+    public IActionResult GetById([FromRoute] int id)
+    {
+        var user = _userService.GetById(id);
+
+        return Ok(user);
     }
 }
